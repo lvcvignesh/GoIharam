@@ -1,0 +1,73 @@
+/* Empty. Add your own CSS if you like */
+.scroll-content > .scroll {
+  height: 100%;
+}
+.scroll-content > .scroll > iframe {
+  min-height: 100%;
+}
+.background-yellow{
+	background-color: #FFCC00; 
+}
+.background-bla{
+	background-color: #FF0CF0; 
+}
+.table-full {
+  display: table;
+  width: 100%;
+}
+.table-center {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#login-div1{
+	height: 35%
+}
+#login-div2{
+	height: 20%
+}
+#login-div3{
+	height: 45%
+}
+#search-div1{
+	height: 25%;
+}
+#search-div2{
+	height: 55%;
+}
+#search-div3{
+	height: 20%;
+}
+.height25{
+	height: 25%
+}
+.bla{
+	line-height: 400% !important;
+	font-weight: bold;
+}
+.searchitem-header{
+	color: #C0C0C0;
+	text-align:center;
+	font-size:initial;
+	padding-bottom:15px
+}
+.searchitem-content{
+	font-weight: bold;
+	text-align:center;
+	font-size:larger;
+}
+.no-padding{
+	padding: 0px !important;
+}
+.padding-form{
+	padding: 10% !important;
+}
+.no-margin-bottom{
+	margin-bottom: 0px !important;
+}
+.bold-font{
+	font-weight: bold;
+}
+.no-border-bottom{
+	border-bottom-width: 0px !important;
+}

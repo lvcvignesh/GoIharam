@@ -1,0 +1,51 @@
+<ion-view view-title="Results">
+    <ion-content style="background:#FFCC00 !important">
+        <ion-list>
+            <style>
+                .item {
+                    border-width: 0px;
+                }
+            </style>
+            <ion-item ng-repeat="playlist in playlists" ng-if="search.package=='HAJ'" style="background-color:#FFCC00;border-width:0px !important">
+                <div class="item item-avatar">
+                    <img src="img/ionic.png">
+                    <h2>{{playlist.Name}}</h2>
+                    <p>{{playlist.Area}}</p>
+                </div>
+                <p>
+                    <div class="item item-divider button-block" style="background:black;color:white">
+                        HAJ
+                    </div>
+                    <ion-list>
+                        <ion-radio ng-model="choice1" ng-value="{{playlist.P1}}" ng-if="inrange(playlist.P1)"> Economy - {{playlist.P1}}</ion-radio>
+                        <ion-radio ng-model="choice1" ng-value="{{playlist.P2}}" ng-if="inrange(playlist.P2)"> Deluxe - {{playlist.P2}}</ion-radio>
+                        <ion-radio ng-model="choice1" ng-value="{{playlist.P3}}" ng-if="inrange(playlist.P3)"> Elite - {{playlist.P3}}</ion-radio>
+                    </ion-list>
+                    <div class="item item-divider button-bar" style="background:black">
+                        <a class="button button-block positive" style="background:black !important;color:white;">Book Now</a>
+                    </div>
+                </p>
+            </ion-item>
+            <ion-item ng-repeat="playlist in playlists" ng-if="search.package=='UMRAH'" style="background-color:#FFCC00;border-width:0px !important">
+                <div class="item item-avatar">
+                    <img src="img/ionic.png">
+                    <h2>{{playlist.Name}}</h2>
+                    <p>{{playlist.Area}}</p>
+                </div>
+                <p>
+                    <div class="item item-divider button-block" style="background:black;color:white">
+                        UMRAH
+                    </div>
+                    <ion-list>
+                        <ion-radio ng-model="choice1" ng-value="{{playlist.P4}}" ng-if="inrange(playlist.P4)"> Economy - {{playlist.P4}}</ion-radio>
+                        <ion-radio ng-model="choice1" ng-value="{{playlist.P5}}" ng-if="inrange(playlist.P5)"> Deluxe - {{playlist.P5}}</ion-radio>
+                        <ion-radio ng-model="choice1" ng-value="{{playlist.P6}}" ng-if="inrange(playlist.P6)"> Elite - {{playlist.P6}}</ion-radio>
+                    </ion-list>
+                    <div class="item item-divider button-bar" style="background:black">
+                        <a class="button button-block positive">Book Now</a>
+                    </div>
+                </p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
