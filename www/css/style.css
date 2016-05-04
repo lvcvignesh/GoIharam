@@ -41,15 +41,46 @@
 .height25{
 	height: 25%
 }
+.height80{
+	height:80%;
+}
+.height70{
+	height:70%;
+}
+.height60{
+	height:60%;
+}
+
+.height50{
+	height:50%;
+}
+.height40{
+	height:40%;
+}
+.height30{
+	height:30%;
+}
+.height20{
+	height:20%;
+}
+.height10{
+	height:10%;
+}
+.width80{
+	width:80%;
+}
+.width20{
+	width:20%;
+}
 .bla{
 	line-height: 400% !important;
 	font-weight: bold;
 }
 .searchitem-header{
+	padding-top:16px;
 	color: #C0C0C0;
 	text-align:center;
 	font-size:initial;
-	padding-bottom:15px
 }
 .searchitem-content{
 	font-weight: bold;
