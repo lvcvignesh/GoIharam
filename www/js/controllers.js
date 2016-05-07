@@ -496,8 +496,9 @@ angular.module('starter.controllers', [])
         $scope.search.count = searchParams.count;
         console.log($scope.search.count);
     })
-    .controller('searchCtrl', function ($scope, searchParams, $state) {
+    .controller('searchCtrl', function ($scope, searchParams, $state, $ionicHistory, $location) {
         var self = this;
+        console.log($ionicHistory.backView());
         $scope.srcData = {};
         $scope.srcData.package = "HAJ";
         $scope.srcData.min = 100000;
@@ -518,6 +519,18 @@ angular.module('starter.controllers', [])
             searchParams.set($scope.srcData.date, $scope.srcData.count, $scope.srcData.package, $scope.slider_translate.minValue, $scope.slider_translate.maxValue);
             $state.go('app.playlists');
         };
+        $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+             viewData.enableBack = true;
+             console.log("Here");        
+         });
+        $scope.go = function ( path ) {
+           $location.path( path );
+        };
+        $scope.myGoBack = function() {
+            $ionicHistory.goBack();
+            console.log($ionicHistory.backView());
+        };
+        
         console.log($scope.search);
     })
     .controller('PostCtrl', function (searchParams) {
@@ -527,4 +540,3 @@ angular.module('starter.controllers', [])
 
         };
     })
-    .controller('LoginCtrl', function ($scope) {});

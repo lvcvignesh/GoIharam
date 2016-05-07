@@ -11,6 +11,9 @@
 .background-bla{
 	background-color: #FF0CF0; 
 }
+.background-white{
+	background-color : white !important;
+}
 .table-full {
   display: table;
   width: 100%;
@@ -19,6 +22,9 @@
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+}
+.word-wrap{
+	word-wrap: break-word;
 }
 #login-div1{
 	height: 35%
@@ -29,14 +35,27 @@
 #login-div3{
 	height: 45%
 }
+.login-rounded-left{
+	background:black !important;
+	border-top-left-radius:10px;
+	border-top-right-radius:0px;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:0px;
+}
 #search-div1{
-	height: 25%;
+	height: 20%;
 }
 #search-div2{
-	height: 55%;
+	height: 60%;
 }
 #search-div3{
 	height: 20%;
+}
+#detail-div1{
+	height: 30%;
+}
+#detail-div2{
+	height:70%;
 }
 .height25{
 	height: 25%
@@ -50,15 +69,25 @@
 .height60{
 	height:60%;
 }
-
+.height15{
+	height:15%;
+}
 .height50{
 	height:50%;
 }
 .height40{
 	height:40%;
 }
+.over-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 .height30{
 	height:30%;
+}
+.height33{
+	height:33%;
 }
 .height20{
 	height:20%;
@@ -72,9 +101,18 @@
 .width20{
 	width:20%;
 }
+.height-auto{
+	height: auto;
+}
 .bla{
 	line-height: 400% !important;
 	font-weight: bold;
+}
+.padding-detail{
+	/*padding-left : 1%;
+	padding-right: 5%;
+	padding-top: 10%;*/
+	padding: 7%
 }
 .searchitem-header{
 	padding-top:16px;
@@ -87,11 +125,21 @@
 	text-align:center;
 	font-size:larger;
 }
+.no-rounded-corners{
+	border-radius: 0 !important;
+}
 .no-padding{
 	padding: 0px !important;
 }
+.padding-icons{
+	padding-top: 5%;
+}
 .padding-form{
-	padding: 10% !important;
+	padding: 7% !important;
+}
+.padding-sides{
+	padding-left: 10%;
+	padding-right: 10%;
 }
 .no-margin-bottom{
 	margin-bottom: 0px !important;
@@ -101,4 +149,32 @@
 }
 .no-border-bottom{
 	border-bottom-width: 0px !important;
+}
+.bb-font{
+	font-size: 12px !important;
+	font-weight: bold;
+}
+.bb-active{
+	background-color: #e7ca55 !important 
+}
+.bar-header {
+    border: 0px !important;
+    border-bottom-color: transparent !important;
+    background-image: none !important;
+    border-bottom: none !important;
+}
+.col{
+  text-align:center !important;
+}
+
+.row{
+  padding-bottom:20px !important;
+}
+.my-icon:before,
+.my-icon{
+  font-size:40px !important;
+  display:block !important;
+}
+.color-yellow{
+	color:  #FFCC00;
 }

@@ -1,26 +1,30 @@
 <ion-view hide-nav-bar="true">
     <ion-content>
-        <img src="img/logo.png" width="100%" height="35%">
-        <form ng-submit="doLogin()" style="background:#FFCC00;padding-top:100px">
+        <div id="login-div1" style="background-color:black">
+            <img class="over-img" align="middle" src="img/logo.jpg" width="100%" height="100%">
+        </div>
+        <div id="login-div2" class="table-full">
+            <h4 class="table-center">Lorem Ipsum Loren</h4>
+        </div>
+        <div id="login-div3">
+        <form ng-submit="doLogin()">
+            <div class="height20">
             <a class="item-input-wrapper" style="background:#FFCC00">
-                <i class="button button-clear ion-person " style="background:black !important;border-top-left-radius:10px;border-top-right-radius:0px;border-bottom-left-radius:10px;border-bottom-right-radius:0px"></i>
-                <input type="text " placeholder="Username " ng-model="loginData.username " style="height:47px">
+                <i class="button button-clear ion-person login-rounded-left" ></i>
+                <input type="text " placeholder="  Username " ng-model="loginData.username " style="height:47px">
             </a>
-            <br>
+            </div>
+            <div class="height20">
             <a class="item-input-wrapper positive " style="background:#FFCC00 ">
-                <i class="button button-clear ion-locked " style="background:black !important;border-top-left-radius:10px;border-top-right-radius:0px;border-bottom-left-radius:10px;border-bottom-right-radius:0px"></i>
-                <input type="password " placeholder="Password " ng-model="loginData.password " style="height:47px">
+                <i class="button button-clear ion-locked login-rounded-left"></i>
+                <input type="password " placeholder="  Password " ng-model="loginData.password " style="height:47px">
             </a>
-
-            <label class="item" style="padding-top:50px;background: #FFCC00 !important;
-    border-bottom-color: #FFCC00 !important">
-                <button class="button button-positive " type="submit " style="width:100% ">Log in</button>
-            </label>
-            <div class="button-bar ">
-                <a href=" " class="button button-clear " style="color:black; ">Sign Up</a>
-                <a href=" " class="button button-clear " style="color:black; ">Forgot Password</a>
+            </div>
+            <div class="height60">
+            <button class="button button-full button-positive">Login</button>
             </div>
             </div>
         </form>
+        </div>
     </ion-content>
 </ion-view>

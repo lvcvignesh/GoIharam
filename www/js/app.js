@@ -20,7 +20,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule'])
             }
         });
     })
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         $stateProvider
             .state('app', {
                 url: '/app'
@@ -44,7 +44,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule'])
                 url: '/browse'
                 , views: {
                     'menuContent': {
-                        templateUrl: 'templates/browse.html'
+                        templateUrl: 'templates/details.html'
                     }
                 }
             })
@@ -53,6 +53,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule'])
                 , views: {
                     'menuContent': {
                         templateUrl: 'templates/login.html'
+                    }
+                }
+            })
+            .state('app.results', {
+                url: '/results'
+                , views: {
+                    'menuContent': {
+                        templateUrl: 'templates/results.html'
+                        , controller: 'PlaylistsCtrl'
                     }
                 }
             })
@@ -76,5 +85,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule'])
             }
         });
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/login');
+        $urlRouterProvider.otherwise('/app/search');
+        $ionicConfigProvider.tabs.position('top');
     });
