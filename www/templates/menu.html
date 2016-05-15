@@ -1,0 +1,62 @@
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content drag-content="false" class="navbar">
+        <ion-nav-bar class="mybar" align-title="center">
+        <ion-nav-buttons side="left">
+        <button class="button button-icon ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu menu-toggle="left" side="left" width="300">
+
+        <ion-content class="my-view has-footer background-yellow">
+            <img src="img/logo.jpg" width="100%" height="25%">
+            <ul class="list">
+                <a href="#/app/search" class="item item-icon-left background-yellow">
+                  <i class="icon ion-search"> </i>Search</a>
+                <a href="#/app/browse" class="item item-icon-left background-yellow" nav-clear menu-close><i class="icon ion-ios-list-outline"> </i>Details</a>
+                <a href="#/app/results" class="item item-icon-left background-yellow" nav-clear menu-close><i class="icon ion-paper-airplane"> </i>Results</a>
+            </ul>
+
+        </ion-content>
+        <ion-footer-bar align-title="left" class="background-yellow ">
+          <a href="#/app/login">
+          <i class="button button-icon ion-log-in"></i>
+          <h4 class="title">Login</h4>
+          </a>
+        </ion-footer-bar
+    </ion-side-menu>
+</ion-side-menus>
+<!--<ion-side-menus enable-menu-with-back-views="true">
+
+        <ion-side-menu-content>
+          <ion-nav-bar class="bar-positive" align-title="center">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="right">
+              <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+              </button>
+            </ion-nav-buttons>
+          </ion-nav-bar>
+
+          <ion-nav-view name="menuContent"></ion-nav-view>
+        </ion-side-menu-content> 
+
+        <ion-side-menu side="left">
+          <ion-header-bar class="bar-assertive">
+            <h1 class="title">Left Menu</h1>
+          </ion-header-bar>
+          <ion-content>
+            <ul class="list">
+              <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these link
+              <a href="#/app/browse" class="item" menu-toggle="left">Check-in</a>
+              <a href="#/app/search" class="item" menu-toggle="left">Attendees</a>
+            </ul>
+          </ion-content>
+        </ion-side-menu>
+
+      </ion-side-menus>
+    -->

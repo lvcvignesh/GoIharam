@@ -1,0 +1,32 @@
+<ion-view title="Search">
+    <ion-content>
+        <div class="list">
+            <a class="item item-input item-stacked-label" style="margin:1%;background:black;border-radius:10px;height:85px">
+                <i class="button-clear ion-calendar" style="color:white;width:10%">&nbsp;Date</i>
+                <input type="date" value="2016-03-03" ng-model="srcData.date" style="border-radius:0;border-right:13px solid">
+            </a>
+            <a class="item item-input item-stacked-label" style="margin:1%;background:black;border-radius:10px;height:85px">
+                <i class="button-clear ion-calendar" style="color:white;width:10%">&nbsp;No of People</i>
+                <input type="text" placeholder="2" ng-model="srcData.count" style="border-radius:0;border-right:13px solid">
+            </a>
+            <a class="item item-input item-stacked-label" style="margin:1%;background:black;border-radius:10px;height:85px">
+                <i class="button-clear ion-ios-moon" style="color:white;width:10%">&nbsp;Package<br></i>
+                <select ng-model="srcData.package" style="border-radius:0;width:100%;height:34px;border-right:13px solid">
+                    <option value="HAJ">HAJ</option>
+                    <option value="UMRAH" selected>UMRAH</option>
+                </select>
+            </a>
+            <a class="item item-input item-stacked-label" style="margin:1%;background:black;border-radius:10px;height:85px">
+                <i class="button-clear ion-card" style="color:white;width:10%">&nbsp;Range<br></i>
+                <rzslider rz-slider-model="slider_translate.minValue" rz-slider-high="slider_translate.maxValue" rz-slider-options="slider_translate.options" style="border-right:13px solid"></rzslider>
+            </a>
+
+        </div>
+    </ion-content>
+    <ion-footer-bar class="bar-positive tabs">
+        <button class="button button-block button-positive" ng-click="send()">
+            Search
+        </button>
+    </ion-footer-bar>
+
+</ion-view>

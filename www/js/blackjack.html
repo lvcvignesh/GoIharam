@@ -1,0 +1,13 @@
+<%args> $widgetData </%args> 
+<%init> my $categorySource = $widgetData->{categorySource}; my $recognized = $Customer->isRecognized(); </%init> 
+% if($recognized) { <% AUI::section(css_class => "New_user_card_devo gwm-Card gwm-Card--withTitlePadding gwm-categoryShowcaseCard") %> 
+<h2 class="gwm-Card-heading gwm-Card-heading"></h2> 
+<div class="gwm-BillboardCard--cropped" style="height:175px;">
+ <div class="gwm-BillboardCard--cropped gwm-BillboardCard--center" style=""> 
+ <a class="a-link-normal" href="/b/ref=mh_subscribe_BB?node=5728645031&amp;pf_rd_p=922139107&amp;pf_rd_s=grid-5&amp;pf_rd_t=36701&amp;pf_rd_i=mobile&amp;pf_rd_m=A1VBAL9TL5WCBF&amp;pf_rd_r=0QMJJAZW1Y6KTFSG$ 
+ <img alt="Try our Cash on Delivery" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTJlv2LSrKgy3YOVA9_fxjQPYiOqplm857USQbBgs-GHvtXuDTe" /> 
+ </a> 
+ </div> 
+ </div> % } 
+ <% AUI::end() %> 
+ <style> .New_user_card_devo{ height: 175px; } </style> 
