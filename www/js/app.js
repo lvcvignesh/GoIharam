@@ -11,7 +11,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule','ionic-dat
             // for form inputs)
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                cordova.plugins.Keyboard.disableScroll(true);
+                cordova.plugins.Keyboard.disableScroll(false);
 
             }
             if (window.StatusBar) {
@@ -53,6 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule','ionic-dat
                 , views: {
                     'menuContent': {
                         templateUrl: 'templates/login.html'
+                        , controller: 'LoginCtrl'
                     }
                 }
             })

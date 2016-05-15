@@ -11,7 +11,7 @@ angular.module('starter.controllers', [])
 
         // Form data for the login modal
         $scope.loginData = {};
-
+        //ionic.Platform.isFullScreen = true
         // Create the login modal that we will use later
         $ionicModal.fromTemplateUrl('templates/login.html', {
             scope: $scope
@@ -514,7 +514,6 @@ angular.module('starter.controllers', [])
 
         });;
         var self = this;
-
         //HAJ-UMRA Toggle method 
         $scope.b1='background-yellow';
         $scope.select=function(choice){
@@ -619,3 +618,15 @@ angular.module('starter.controllers', [])
 
         };
     })
+    .controller('LoginCtrl', function ($scope) {  
+    })
+    .directive('focusMe', function($timeout) {
+        return {
+            link: function(scope, element, attrs) {
+
+              $timeout(function() {
+                element[0].focus(); 
+              });
+            }
+        };
+    });

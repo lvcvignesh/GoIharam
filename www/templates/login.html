@@ -1,5 +1,5 @@
-<ion-view hide-nav-bar="true">
-    <ion-content class="background-yellow">
+<!--<ion-view hide-nav-bar="true" scroll="true">
+    <ion-pane class="background-yellow">
         <div id="login-div1" style="background-color:black">
             <img class="over-img" align="middle" src="img/logo.jpg" width="100%" height="100%">
         </div>
@@ -8,13 +8,13 @@
         </div>
         <div id="login-div3">
             <div class="height50">
-            <a class="item-input-wrapper" style="background:#FFCC00">
+            <a class="item-input-wrapper" style="background:#FFCC00" focus-me>
                 <i class="button button-clear ion-person rounded-left background-black" ></i>
                 <input type="text" class="rounded-right" placeholder="  Username " ng-model="loginData.username " style="height:47px;width:100%">
             </a>
             </div>
             <div class="height50">
-            <a class="item-input-wrapper positive " style="background:#FFCC00 ">
+            <a class="item-input-wrapper positive " style="background:#FFCC00 " focus-me>
                 <i class="button button-clear rounded-left background-black ion-locked login-rounded-left"></i>
                 <input type="password " class="rounded-right" placeholder="  Password " ng-model="loginData.password " style="height:47px;width:100%">
             </a>
@@ -35,33 +35,47 @@
                 </div>
             </div>
         </div>
-    </ion-content>
+    </ion-pane>
 </ion-view>
 
-<!--
-<ion-view hide-nav-bar="true">
-    <ion-content>
-        <img src="img/logo.png" width="100%" height="35%">
-        <form ng-submit="doLogin()" style="background:#FFCC00;padding-top:100px">
-            <a class="item-input-wrapper" style="background:#FFCC00">
-                <i class="button button-clear ion-person " style="background:black !important;border-top-left-radius:10px;border-top-right-radius:0px;border-bottom-left-radius:10px;border-bottom-right-radius:0px"></i>
-                <input type="text " placeholder="Username " ng-model="loginData.username " style="height:47px;width:100%">
+-->
+<ion-view hide-nav-bar="true" scroll="true">
+    <ion-content class="background-yellow">
+        <div id="login-div1" style="background-color:black">
+            <img class="over-img" align="middle" src="img/logo.jpg" width="100%" height="100%">
+        </div>
+        <div class="table-full height17">
+            <h4 class="table-center">Lorem Ipsum Loren</h4>
+        </div>
+ 
+        <div class="padding-textbox">
+            <a class="item-input-wrapper" style="background:#FFCC00" focus-me>
+                <i class="button button-clear ion-person rounded-left background-black" ></i>
+                <input type="text" class="rounded-right" placeholder="  Username " ng-model="loginData.username " style="height:47px;width:100%">
             </a>
-            <br>
-            <a class="item-input-wrapper positive " style="background:#FFCC00 ">
-                <i class="button button-clear ion-locked " style="background:black !important;border-top-left-radius:10px;border-top-right-radius:0px;border-bottom-left-radius:10px;border-bottom-right-radius:0px"></i>
-                <input type="password " placeholder="Password " ng-model="loginData.password " style="height:47px">
+        </div>
+        <div class="padding-textbox">
+            <a class="item-input-wrapper" style="background:#FFCC00 " focus-me>
+                <i class="button button-clear rounded-left background-black ion-locked login-rounded-left"></i>
+                <input type="password " class="rounded-right" placeholder="  Password " ng-model="loginData.password " style="height:47px;width:100%">
             </a>
-
-            <label class="item" style="padding-top:50px;background: #FFCC00 !important;
-    border-bottom-color: #FFCC00 !important">
-                <button class="button button-positive " type="submit " style="width:100% ">Log in</button>
-            </label>
-            <div class="button-bar ">
-                <a href=" " class="button button-clear " style="color:black; ">Sign Up</a>
-                <a href=" " class="button button-clear " style="color:black; ">Forgot Password</a>
+        </div>
+        <div class="padding-login">
+            <button class="button button-full rounded background-black color-yellow bold-font" type="submit">Login
+            </button>
+        </div>
+        <div class="row">
+            <div class="col col-20">
             </div>
+           <div class="col col-20" style="text-align:right">
+                Signup
             </div>
-        </form>
+            <div class="col col-10" style="text-align:center">
+            </div>
+            <div class="col" style="text-align:left">
+                Forgot Password?
+            </div>
+        </div>
+      
     </ion-content>
-</ion-view>-->
+</ion-view>
