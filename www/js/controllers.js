@@ -496,7 +496,7 @@ angular.module('starter.controllers', [])
         $scope.search.count = searchParams.count;
         console.log($scope.search.count);
     })
-    .controller('searchCtrl', function ($scope, searchParams, $state, $ionicHistory, $location,ionicDatePicker, $ionicPopup) {
+    .controller('searchCtrl', function ($scope, searchParams, $state, $ionicHistory, $location,ionicDatePicker, $ionicModal) {
         
         //Range Slider Definition
         $(function () {
@@ -562,37 +562,50 @@ angular.module('starter.controllers', [])
             }
         };
         //Number Selection start
-        $scope.showPopup = function() {
-           $scope.data = {}
+        $scope.listdata = [];
+        $scope.srcData.numberText = 'Adults';
+        for (var i=1; i<=20;i++){
+          $scope.listdata.push(i)
+        }
+        $scope.data = {
+            clientSide: '2'
+            
+        };  
+       $ionicModal.fromTemplateUrl('templates/popup.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.modal = modal;
+          });
+          $scope.openModal = function() {
+            $scope.modal.show();
+          };
+          $scope.closeModal = function() {
+            var number = parseInt($scope.data.clientSide);
+            if (number == 1) {
+                $scope.srcData.numberText = 'Adult';        
+            }
+            else {
+                $scope.srcData.numberText = 'Adults';
+            }
+            $scope.modal.hide();
+          };
+          // Cleanup the modal when we're done with it!
+          $scope.$on('$destroy', function() {
+            $scope.modal.remove();
+          });
+          // Execute action on hide modal
+          $scope.$on('modal.hidden', function() {
+            // Execute action
+          });
+          // Execute action on remove modal
+          $scope.$on('modal.removed', function() {
+            // Execute action
+          });
 
            // An elaborate, custom popup
-           var myPopup = $ionicPopup.show({
-             template: '<input type="number" ng-model="data.number">',
-             title: 'Enter Number of People',
-             scope: $scope,
-             buttons: [
-               { text: 'Cancel' },
-               {
-                 text: '<b>Save</b>',
-                 type: 'button-positive',
-                 onTap: function(e) {
-                   if (!$scope.data.number) {
-                     //don't allow the user to close unless he enters wifi password
-                     e.preventDefault();
-                   } else {
-                     return $scope.data.number;
-                   }
-                 }
-               },
-             ]
-           });
-           myPopup.then(function(res) {
-     console.log('Tapped!', res);
-     $scope.srcData.number = res;
-     console.log('Tfcf!', $scope.srcData.number);
-   });
-        }
- //Misc
+        
+        //Misc
         $scope.send = function () {
             console.log($scope.srcData);
             searchParams.set($scope.srcData.date, $scope.srcData.count, $scope.srcData.package, $scope.slider_translate.minValue, $scope.slider_translate.maxValue);

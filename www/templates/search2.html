@@ -6,7 +6,7 @@
 	</div>-->
 	<ion-content scroll="false" class="has-header background-white">
 		<div id="search-div1" class="table-full padding-sides background-yellow">
-			<h2 class="word-wrap table-center">"Any Quote On travel"</h2>
+			<h2 class="word-wrap font-titilium table-center">"Any Quote On travel"</h2>
 		</div>
 		<div id="search-div2" class="list background-white no-margin-bottom">
 			<div class="item item-icon-right height25 no-padding"  ng-click="openDatePicker()">
@@ -21,21 +21,21 @@
 				</div>
 				
 			</div>
-			<a class="item item-icon-right height25 no-padding" ng-click="showPopup()">
+			<a class="item item-icon-right height25 no-padding" ng-click="modal.show()">
 				<div class="height40 searchitem-header" >
 					TRAVELLERS
 				</div>
 				<div class="height20">
 				</div>
 				<div class="height40 searchitem-content">
-					{{srcData.number}} Adults
+					{{data.clientSide}} {{srcData.numberText}}
 					<i class="icon ion-ios-arrow-down"></i>
 				</div>
 			</a>
 			<!--<div class="item item-icon-right height25">
 				<div class="row col searchitem-header" >
 					TRAVELLERS
-				</div>
+				</div;>
 				<div class="row col searchitem-content">
 					2 Adults
 					<i class="icon ion-ios-arrow-down"></i>
@@ -60,7 +60,7 @@
 				</div>
 		</div>
 		<div id="search-div3" class="padding-form background-white">
-			<button class="button background-yellow bold-font" type="button" ng-click="send()" style="width:100% ">PLAN MY TRIP</button>
+			<button class="button background-yellow font-titilium bold-font" type="button" ng-click="send()" style="width:100% ">PLAN MY TRIP</button>
 		</div>
 	</ion-content>
 </ion-view>

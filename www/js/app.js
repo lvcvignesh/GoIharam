@@ -39,7 +39,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule','ionic-dat
                 }
             }
         })
-
         .state('app.browse', {
                 url: '/browse'
                 , views: {
@@ -66,6 +65,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule','ionic-dat
                     }
                 }
             })
+            .state('app.landing', {
+                url: '/landing'
+                , views: {
+                    'menuContent': {
+                        templateUrl: 'templates/landing.html'
+                    }
+                }
+            })
             .state('app.playlists', {
                 url: '/playlists'
                 , views: {
@@ -86,6 +93,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule','ionic-dat
             }
         });
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/search');
+        $urlRouterProvider.otherwise('/app/landing');
         $ionicConfigProvider.tabs.position('top');
     });

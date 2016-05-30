@@ -125,8 +125,15 @@
 	height: auto;
 }
 .bla{
-	line-height: 400% !important;
-	font-weight: bold;
+	font-size: 12px;
+	margin-top: 10px;
+	margin-bottom: 10px;xs
+}
+.font-12{
+	font-size: 12px;
+}
+.font-normal{
+	font-weight: normal;
 }
 .padding-detail{
 	/*padding-left : 1%;
@@ -134,11 +141,17 @@
 	padding-top: 10%;*/
 	padding: 7%
 }
+.font-10{
+	font-size: 10px;
+}
 .searchitem-header{
 	padding-top:16px;
 	color: #C0C0C0;
 	text-align:center;
 	font-size:initial;
+}
+.text-center{
+	text-align: center !important;
 }
 .searchitem-content{
 	font-weight: bold;
@@ -156,6 +169,13 @@
 }
 .padding-form{
 	padding: 7% !important;
+}
+.padding-landing-image{
+	padding-top :10%;
+	padding-bottom: 10%;
+}
+.background-logo{
+	background-color: #E8A82D;
 }
 .padding-sides{
 	padding-left: 10%;
@@ -191,6 +211,9 @@
 .color-yellow{
 	color:  #FFCC00;
 }
+.font-titilium{
+	font-family: "Titillium Web" !important;
+}
 .mybar {
     background-size: 100% 0px !important;
     background: #FFCC00 !important
@@ -204,11 +227,24 @@
 .padding-textbox{
 	padding-top: 2%;
 }
+.padding-landing-icons{
+	padding :5%;
+}
 .padding-login{
 	padding-left: 2%;
 	padding-right: 2%;
 	padding-top: 2%
 }
+.padding-landing{
+	padding-left: 5%;
+	padding-right:5%;
+}
 .border-yellow{
 	border-color: white !important;
+}
+body {
+  font-family: "Titillium Web" !important;
+}
+h1,h2,h3,h4,h5 {
+	font-family: "Titillium Web" !important;
 }
