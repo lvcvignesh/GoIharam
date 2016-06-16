@@ -1,28 +1,46 @@
-
 <ion-side-menus enable-menu-with-back-views="true">
-    <ion-side-menu-content class="navbar">
-        <!--<ion-nav-bar class="bar-stable" align-title="center">
-        <ion-nav-back-button side="left">
-        </ion-nav-back-button>
-        <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>-->
+    <ion-side-menu-content drag-content="false" class="navbar">
+        <ion-nav-bar class="mybar" align-title="center">
+            <ion-nav-buttons side="left">
+                <button class="button button-icon ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
 
     <ion-side-menu menu-toggle="left" side="left" width="300">
 
-        <ion-content class="my-view">
-            <img src="img/logo.jpg" width="100%" height="25%">
+        <ion-content class="my-view has-footer background-yellow">
+            <div class="height30">
+                <img class="over-img" align="middle" src="img/logo2.jpg" width="100%" height="100%">
+            </div>
+            <h3 ng-if="data.uid!=null" style="text-align:center"> Welcome {{data.uid}}! </h3>
             <ul class="list">
-                <a href="#/app/search" class="item assertive-bg" nav-clear menu-close><i class="icon-left ion-search"> </i>Search</a>
-                <a href="#/app/browse" class="item assertive-bg" nav-clear menu-close><i class="icon-left ion-ios-list-outline"> </i>Details</a>
-                <a href="#/app/results" class="item assertive-bg" nav-clear menu-close><i class="icon-left ion-ios-list-outline"> </i>Results</a>
+                <a href="#/app/search" class="item border-yellow item-icon-left background-yellow">
+                    <i class="icon ion-search"> </i>Search</a>
+                <a href="#/app/browse" class="item border-yellow item-icon-left background-yellow" nav-clear menu-close><i class="icon ion-ios-list-outline"> </i>Details</a>
+                <a href="#/app/results" class="item border-yellow item-icon-left background-yellow" nav-clear menu-close><i class="icon ion-paper-airplane"> </i>Results</a>
             </ul>
 
         </ion-content>
+        <!--<ion-footer-bar align-title="left" class="background-yellow">
+            <a href="#/app/login" ng-if="data.uid==null">
+                <i class="button button-icon ion-log-in"></i>
+                <h4 class="title">Login</h4>
+            </a>
+            <a ng-click="logout()" ng-if="data.uid!=null">
+                <i class="button button-icon ion-log-out"></i>
+                <h4 class="title">Logout</h4>
+            </a>
+        </ion-footer-bar
+      -->
+      <ion-footer-bar align-title="left" class="background-yellow ">
+          <a href="#/app/login">
+          <i class="button button-icon ion-log-in"></i>
+          <h4 class="title">Login</h4>
+          </a>
+        </ion-footer-bar>
     </ion-side-menu>
 </ion-side-menus>
 <!--<ion-side-menus enable-menu-with-back-views="true">

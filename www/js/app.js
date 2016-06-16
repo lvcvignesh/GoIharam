@@ -4,14 +4,14 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'rzModule'])
+angular.module('starter', ['ionic', 'starter.controllers', 'rzModule', 'ionic-datepicker', 'ngStorage', 'ng-sweet-alert'])
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-                cordova.plugins.Keyboard.disableScroll(true);
+                cordova.plugins.Keyboard.disableScroll(false);
 
             }
             if (window.StatusBar) {
@@ -27,37 +27,50 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule'])
                 , abstract: true
                 , templateUrl: 'templates/menu.html'
                 , controller: 'AppCtrl'
+                , cache: false
             })
+            .state('app.search', {
+                cache: false
+                , url: '/search'
+                , views: {
+                    'menuContent': {
+                        templateUrl: 'templates/search2.html'
+                        , controller: 'searchCtrl'
 
-        .state('app.search', {
-            url: '/search'
-            , views: {
-                'menuContent': {
-                    templateUrl: 'templates/search2.html'
-                    , controller: 'searchCtrl'
-
+                    }
                 }
-            }
-        })
-
-        .state('app.browse', {
-                url: '/browse'
+            })
+            .state('app.browse', {
+                cache: false
+                , url: '/browse/:params/:book'
                 , views: {
                     'menuContent': {
                         templateUrl: 'templates/details.html'
+                        , controller: 'browseCtrl'
                     }
                 }
             })
             .state('app.login', {
-                url: '/login'
+                cache: false
+                , url: '/login'
                 , views: {
                     'menuContent': {
                         templateUrl: 'templates/login.html'
+                        , controller: 'LoginCtrl'
+                    }
+                }
+            })
+            .state('app.detailform', {
+                url: '/detailform'
+                , views: {
+                    'menuContent': {
+                        templateUrl: 'templates/DetailForm.html'
                     }
                 }
             })
             .state('app.results', {
-                url: '/results'
+                cache: false
+                , url: '/results'
                 , views: {
                     'menuContent': {
                         templateUrl: 'templates/results.html'
@@ -65,8 +78,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule'])
                     }
                 }
             })
+            .state('app.landing', {
+                url: '/landing'
+                , views: {
+                    'menuContent': {
+                        templateUrl: 'templates/landing.html'
+                    }
+                }
+            })
             .state('app.playlists', {
-                url: '/playlists'
+                cache: false
+                , url: '/playlists'
                 , views: {
                     'menuContent': {
                         templateUrl: 'templates/playlists.html'
@@ -85,6 +107,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'rzModule'])
             }
         });
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/search');
+        $urlRouterProvider.otherwise('/app/landing');
         $ionicConfigProvider.tabs.position('top');
     });

@@ -1,507 +1,171 @@
 angular.module('starter.controllers', [])
+    .run(function ($rootScope, $state, $stateParams, $location, $localStorage, searchResults) {
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+        $rootScope.$on("$stateChangeSuccess", function (event, toState, toParams, fromState, fromParams) {
+            // to be used for back button //won't work when page is reloaded.
+            $rootScope.previousState_name = fromState.url;
+            $rootScope.previousState_params = fromParams;
+        });
+        //back button function called from back button's ng-click="back()"
+        $rootScope.back = function () {
+            console.log("Transition  : " + $localStorage.uid);
+            searchResults.login()
+                //console.log($rootScope.previousState_name + "  Prev STATE");
+            console.log($rootScope.previousState_params);
+            if ($rootScope.previousState_params == {})
+                $location.path("/app" + $rootScope.previousState_name);
+            else {
+                var path = "/app" + $rootScope.previousState_name;
+                path = path.replace(":params", $rootScope.previousState_params.params)
+                path = path.replace(":book", "true")
+                $location.path(path)
+            } //            $state.go($rootScope.previousState_name, $rootScope.previousState_params);
+        };
+    }).controller('AppCtrl', function ($scope, $state, $ionicModal, $timeout, searchResults, $localStorage) {
 
-.controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
+        $scope.data = {
+            uid: searchResults.uid
+        };
+        $scope.logout = function () {
+            console.log("Logging out!");
+            searchResults.logout();
+            $scope.data = {
+                uid: searchResults.uid
+            };
+            $state.go('app.landing', {}, {
+                reload: true
+            });
 
-        // With the new view caching in Ionic, Controllers are only called
-        // when they are recreated or on app start, instead of every page change.
-        // To listen for when this page is active (for example, to refresh data),
-        // listen for the $ionicView.enter event:
-        //$scope.$on('$ionicView.enter', function(e) {
-        //});
+        }
+        $scope.$on('$ionicView.enter', function (event, viewData) {
+            viewData.enableBack = true;
+            searchResults.login();
+            $scope.data.uid = $localStorage.uid;
+            console.log("Menu Controller " + $scope.data.uid + "\t" + $localStorage.uid);
 
-        // Form data for the login modal
-        $scope.loginData = {};
-
-        // Create the login modal that we will use later
-        $ionicModal.fromTemplateUrl('templates/login.html', {
-            scope: $scope
-        }).then(function (modal) {
-            $scope.modal = modal;
         });
 
-        // Triggered in the login modal to close it
-        $scope.closeLogin = function () {
-            $scope.modal.hide();
-        };
-
-        // Open the login modal
-        $scope.login = function () {
-            $scope.modal.show();
-        };
-
-        // Perform the login action when the user submits the login form
-        $scope.doLogin = function () {
-            console.log('Doing login', $scope.loginData);
-
-            // Simulate a login delay. Remove this and replace with your login
-            // code if using a login system
-            $timeout(function () {
-                $scope.closeLogin();
-            }, 1000);
-        };
     })
-    .factory('searchParams', function () {
-        var searchParams = {};
-        searchParams.count = 10;
-        searchParams.min = 50000
-        searchParams.max = 500000
-        searchParams.package = "HAJ";
-        searchParams.set = function (dt, ct, type, minVal, maxVal) {
-            searchParams.date = dt;
-            searchParams.count = ct;
-            searchParams.package = type;
-            searchParams.min = minVal;
-            searchParams.max = maxVal;
-            console.log(searchParams);
-        };
-        return searchParams;
-    })
-    .controller('PlaylistsCtrl', function ($scope, searchParams) {
-        $scope.playlists = [
-            {
-                "Name": "A l Misbah Haj & Umra Services"
-                , "Address": "No 51, Sydenhams Road, Periamet, Chennai - 600007, Periamet"
-                , "Phone": "91)-44-42117217  +(91)-9444259560"
-                , "Url": "www.arrahmeen.com"
-                , "Area": "Perimet"
-                , "P1": 275000
-                , "P2": 300000
-                , "P3": 325000
-                , "P4": 40000
-                , "P5": 50000
-                , "P6": 75000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "A R Rahman Haj Service"
-                , "Address": "No 75, 2nd Street, Egmore, Chennai - 600008, Near Don Bosco School Sait Colony"
-                , "Phone": "(91)-44-28191230, 28191231  +(91)-9884477339, 9965744360, 9384848416"
-                , "Url": "www.sadiqhaj.com"
-                , "Area": "Egmore"
-                , "P1": 280000
-                , "P2": 305000
-                , "P3": 330000
-                , "P4": 45000
-                , "P5": 55000
-                , "P6": 80000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Aeman Haj And Umrah Service"
-                , "Address": "14/B, First Floor, Vepery High Rd, Park Town, Periyamet, Vepery, Chennai, Tamil Nadu 600003, India"
-                , "Phone": 0
-                , "Url": "www.onlyumrah.com"
-                , "Area": "Perimet"
-                , "P1": 285000
-                , "P2": 310000
-                , "P3": 335000
-                , "P4": 50000
-                , "P5": 60000
-                , "P6": 85000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Afzal HAJ Tour And Travel"
-                , "Address": "150,1st Floor, Vepery High Road, Periamet, Chennai - 600007"
-                , "Phone": 9566085786
-                , "Url": "www.hajnumrah.com"
-                , "Area": "Perimet"
-                , "P1": 290000
-                , "P2": 315000
-                , "P3": 340000
-                , "P4": 55000
-                , "P5": 50000
-                , "P6": 75000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Afzal Haj Tour&Travels Pltd"
-                , "Address": "150, Veperyhigh Road, Periamet, Chennai - 600003"
-                , "Phone": "044 - 25383013"
-                , "Url": "www.goodjourney.com"
-                , "Area": "Perimet"
-                , "P1": 275000
-                , "P2": 300000
-                , "P3": 325000
-                , "P4": 60000
-                , "P5": 55000
-                , "P6": 80000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Afzal Haj Tours & Travels"
-                , "Address": "No 150 1st Floor, Vepery High Road, Park Town, Chennai - 600003, Periamet"
-                , "Phone": "(91)-44-25383013, 42174665  +(91)-9884478655, 9840112158, 9841309574, 9941186086, 9994458425, 8438884995  +(91)-44-42174665"
-                , "Url": "www.afzalhaj.com"
-                , "Area": "Perimet"
-                , "P1": 280000
-                , "P2": 305000
-                , "P3": 330000
-                , "P4": 65000
-                , "P5": 60000
-                , "P6": 85000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Afzal Haj Tours And Travels Private Limited"
-                , "Address": "No.150, First Floor, Vepery High Rd, Poongavanapuram, Periyamet, Chennai, Tamil Nadu 600003"
-                , "Phone": "Phone:044 2538 3013 Mobile: 98401 12158"
-                , "Url": "http://www.afzalhaj.com/"
-                , "Area": "Perimet"
-                , "P1": 285000
-                , "P2": 310000
-                , "P3": 335000
-                , "P4": 70000
-                , "P5": 50000
-                , "P6": 75000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Ahmed World Travels Tours & Cargo Pvt Ltd"
-                , "Address": "No 5/1, Habibullah Road, T Nagar, Chennai - 600017,"
-                , "Phone": "44-28345098, 28345099, 28345786, 28345696,(91)-9710431818, 9841037786, 9445070485"
-                , "Url": "www.millathhajservice.com"
-                , "Area": "T.Nagar"
-                , "P1": 290000
-                , "P2": 315000
-                , "P3": 340000
-                , "P4": 75000
-                , "P5": 55000
-                , "P6": 80000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Ahmed World Travels Tours & Cargo Pvt. Ltd"
-                , "Address": "No. 5/1, Habibullah Rd, Opposite Nadigar Sangam, Thiyagaraya Nagar, Chennai, Tamil Nadu 600017"
-                , "Phone": "Phone:044 2834 5786"
-                , "Url": "www.spiritualenjoy.com"
-                , "Area": "T.Nagar"
-                , "P1": 275000
-                , "P2": 300000
-                , "P3": 325000
-                , "P4": 80000
-                , "P5": 60000
-                , "P6": 85000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Akbar Travels of India"
-                , "Address": "Anna International Airport, GST Road Meenambakkam, Chennai - 600027"
-                , "Phone": "044 - 22560463, 22560462"
-                , "Url": "www.makkahtours.com"
-                , "Area": "Airport"
-                , "P1": 280000
-                , "P2": 305000
-                , "P3": 330000
-                , "P4": 85000
-                , "P5": 50000
-                , "P6": 75000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Akbar Travels of India"
-                , "Address": "No 2, Golden Enclave, 275, Old No 184, Poonamallee High Road, Chennai - 600010"
-                , "Phone": "044 - 25321133, 25321134, 25321135, 25321136, 25321137, 25321138, 25321139, 25321140, 25321141, 25321142"
-                , "Url": "www.madinahtour.com"
-                , "Area": "Nungambakkam"
-                , "P1": 285000
-                , "P2": 310000
-                , "P3": 335000
-                , "P4": 90000
-                , "P5": 55000
-                , "P6": 80000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Akbar Travels Of India Pvt. Ltd"
-                , "Address": "1288, 1st Floor, Opp. Air India, Trichy Main Road, Coimbatore, Tamil Nadu 600018"
-                , "Phone": "Phone:0422 230 9200"
-                , "Url": "http://www.akbargroup.in/hajj_umrah_services.html"
-                , "Area": "Coimbatore"
-                , "P1": 290000
-                , "P2": 315000
-                , "P3": 340000
-                , "P4": 95000
-                , "P5": 60000
-                , "P6": 85000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Al - Haj Furniture & Interiors"
-                , "Address": "239, Royapettah High Road, Royapettah High Road, Chennai, Tamil Nadu 600014, India"
-                , "Phone": 13.051333
-                , "Url": "www.royaltravels.com"
-                , "Area": "Royapettah"
-                , "P1": 275000
-                , "P2": 300000
-                , "P3": 325000
-                , "P4": 100000
-                , "P5": 55000
-                , "P6": 75000
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            , {
-                "Name": "Al adam haj pvt ltd"
-                , "Address": "18/86, Lingi chetty street, Mannady, Chennai - 600001, orange palace complex"
-                , "Phone": "44-42167866  +(91)-9943020260"
-                , "Url": "www.aladamhaj.com"
-                , "Area": "Broadway"
-                , "P1": 280000
-                , "P2": 305000
-                , "P3": 330000
-                , "P4": 105000
-                , "P5": 60000
-                , "P6": 80000
-            }
-        ];
-        $scope.inrange = function (value) {
-            if ((value < searchParams.max) && (value > searchParams.min)) return true;
-            else return false;
+    .factory('searchResults', function ($http, $localStorage) {
+        var searchResults = {}
+        var done = false;
+        searchResults.uid = $localStorage.uid;
+        searchResults.login = function () {
+            console.log("Setting Factory UID Value to " + $localStorage.uid);
+            searchResults.uid = $localStorage.uid;
         }
-        $scope.search = searchParams;
-        $scope.search.count = searchParams.count;
-        console.log($scope.search.count);
+        searchResults.logout = function () {
+            console.log("Deleting Login")
+            delete $localStorage.uid;
+            searchResults.uid = null;
+        }
+        searchResults.params;
+        searchResults.set = function (params, state) {
+            done = false;
+            searchResults.params = params;
+            $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+            $http({
+                    url: 'http://b84e2cc5.ngrok.io//index.php'
+                    , method: "POST"
+                    , data: params
+                })
+                .then(function (response) {
+                        searchResults = response.data;
+                        done = true;
+                        if (Object.keys(response.data).length > 0)
+                            state.go('app.results');
+                    }
+                    , function (response) { // optional
+                        // failed
+                    });
+
+        };
+        searchResults.get = function () {
+            if (done == true)
+                return searchResults;
+        }
+        return searchResults;
     })
-    .controller('searchCtrl', function ($scope, searchParams, $state, $ionicHistory, $location) {
+    .controller('PlaylistsCtrl', function ($scope, searchResults, $state, $localStorage) {
+        $scope.playlists = searchResults.get()
+        searchResults.login();
+        $scope.$on('$ionicView.enter', function () {
+            console.log("Results Page");
+        });
+
+        $scope.go = function (data) {
+            console.log(data);
+            $state.go('app.browse', {
+                params: data
+            });
+        }
+
+    })
+    .controller('searchCtrl', function ($ionicModal, $scope, searchResults, $state, $ionicHistory, $location, ionicDatePicker, $ionicPopup, $http) {
+        //Range Slider Definition
+        $scope.numberOfAdults = '2';
+        $scope.cityName = 'Chennai';
+        var from = 0;
+        var to = 0;
+        $scope.srcData = {};
+        $(function () {
+            var saveResult = function (data) {
+                $scope.srcData.min = data.from;
+                $scope.srcData.max = data.to;
+            };
+
+            $("#range").ionRangeSlider({
+                hide_min_max: true
+                , min: 10000
+                , max: 500000
+                , from: 1000
+                , to: 4000
+                , type: 'double'
+                , step: 1000
+                , prefix: "Rs. "
+                , force_edges: true
+                , onStart: function (data) {
+                    saveResult(data);
+                }
+                , onChange: saveResult
+                , onFinish: saveResult
+            });
+        });;
         var self = this;
+        //HAJ-UMRA Toggle method 
+        $scope.b1 = 'background-yellow';
+        $scope.select = function (choice) {
+            if (choice == 'Hajj') {
+                $scope.b1 = 'background-yellow';
+                $scope.b2 = '';
+            } else {
+                $scope.b2 = 'background-yellow';
+                $scope.b1 = '';
+            }
+            $scope.srcData.package = choice;
+        }
+
+        //DatePicker definition and start
+        var ipObj1 = {
+            callback: function (val) { //Mandatory
+                $scope.srcData.date = new Date(val).toDateString();
+                console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+            }
+            , from: new Date()
+            , closeOnSelect: true, //Optional
+            templateType: 'modal'
+        , };
+        $scope.openDatePicker = function () {
+            ionicDatePicker.openDatePicker(ipObj1);
+        };
         console.log($ionicHistory.backView());
         $scope.srcData = {};
-        $scope.srcData.package = "HAJ";
+        $scope.srcData.package = "Hajj";
+        $scope.srcData.date = new Date().toDateString();
         $scope.srcData.min = 100000;
+        $scope.srcData.max = 1000000;
+        $scope.srcData.number = 2;
         $scope.slider_translate = {
             minValue: 50000
             , maxValue: 500000
@@ -514,29 +178,225 @@ angular.module('starter.controllers', [])
                 }
             }
         };
+        //Number Selection start
+        $scope.listdata = [];
+        $scope.srcData.numberText = 'Adults';
+        for (var i = 1; i <= 20; i++) {
+            $scope.listdata.push(i)
+        }
+        $scope.data = {
+            clientSide: $scope.numberOfAdults
+
+        };
+        $ionicModal.fromTemplateUrl('templates/popup.html', {
+            scope: $scope
+            , animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.modal = modal;
+        });
+        $scope.openModal = function () {
+            $scope.modalTitle = "Travellers";
+            $scope.modal.show();
+        };
+        $scope.closeModal = function () {
+            var number = parseInt($scope.data.clientSide);
+            $scope.numberOfAdults = $scope.data.clientSide;
+            if (number == 1) {
+                $scope.srcData.numberText = 'Adult';
+            } else {
+                $scope.srcData.numberText = 'Adults';
+            }
+            $scope.modal.hide();
+        };
+        // Cleanup the modal when we're done with it!
+        $scope.$on('$destroy', function () {
+            $scope.modal.remove();
+        });
+        // Execute action on hide modal
+        $scope.$on('modal.hidden', function () {
+            // Execute action
+        });
+        // Execute action on remove modal
+        $scope.$on('modal.removed', function () {
+            // Execute action
+        });
+
+        // An elaborate, custom popup
+        //Misc
         $scope.send = function () {
-            console.log($scope.srcData);
-            searchParams.set($scope.srcData.date, $scope.srcData.count, $scope.srcData.package, $scope.slider_translate.minValue, $scope.slider_translate.maxValue);
-            $state.go('app.playlists');
+            var params = {
+                type: 'search'
+                , package: $scope.srcData.package
+                , min: $scope.srcData.min
+                , max: $scope.srcData.max
+                , count: 4
+            };
+            searchResults.set(params, $state);
+            //            $state.go('app.results');
         };
         $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
-             viewData.enableBack = true;
-             console.log("Here");        
-         });
-        $scope.go = function ( path ) {
-           $location.path( path );
+            viewData.enableBack = true;
+            console.log("Search Enter");
+        });
+        $scope.go = function (path) {
+            $location.path(path);
         };
-        $scope.myGoBack = function() {
+        $scope.myGoBack = function () {
             $ionicHistory.goBack();
             console.log($ionicHistory.backView());
         };
-        
-        console.log($scope.search);
+
     })
-    .controller('PostCtrl', function (searchParams) {
+    .controller('PostCtrl', function (searchResults) {
         var self = this;
         self.sendParams = function (dt, ct, type, min, max) {
-            searchParams.set(dt, ct, type, min, max);
+            searchResults.set(dt, ct, type, min, max);
 
         };
     })
+    .controller('browseCtrl', function ($scope, $state, $stateParams, $location, searchResults, $localStorage) {
+        try {
+            var id = JSON.parse($stateParams.params);
+            var full_data = searchResults.get();
+
+            for (i in full_data) {
+                if (parseInt(full_data[i].agentid) == parseInt(id)) {
+                    console.log("Match!");
+                    console.log(full_data[i]);
+                    $scope.data = full_data[i];
+                    break;
+                }
+            }
+
+        } catch (e) {
+            console.log(e);
+            console.log($stateParams.params);
+        }
+        $scope.isAvail = function () {
+            return "icon-alive";
+        }
+        if ($scope.data != null) {
+            try {
+                console.log(searchResults.params.count);
+                $scope.selected = $scope.data.packages[0].package_id;
+                $scope.price = $scope.data.packages[0].price * searchResults.params.count;
+
+            } catch (e) {}
+        }
+        $scope.select = function (id) {
+            for (package in $scope.data.packages) {
+                if (parseInt($scope.data.packages[package].package_id) == parseInt(id)) {
+                    $scope.price = $scope.data.packages[package].price * searchResults.params.count;
+                    console.log($scope.price);
+                }
+            }
+            $scope.selected = id;
+        }
+        $scope.isSelected = function (id) {
+            if ($scope.selected == id)
+                return true
+            else
+                return false
+        }
+        $scope.book = function () {
+            searchResults.login()
+            console.log("Trying to book! " + "Login Status : " + $localStorage.uid)
+            if ($localStorage.uid == null || $localStorage.uid == undefined)
+                $state.go('app.login');
+            else {
+                $location.path('/app/detailform');
+            }
+        }
+        if ($stateParams.book == "true") {
+
+            console.log("AutoBook with user " + $localStorage.uid);
+            $scope.book();
+        }
+
+    })
+    .controller('LoginCtrl', function ($scope, $http, $state, $ionicHistory, $localStorage, searchResults, $ionicLoading) {
+        $scope.data = {};
+        console.log("Login Controller Setting Default LocalStorage");
+        $scope.$storage = $localStorage.$default({
+            uid: null
+        });
+        $scope.data.uid = $scope.$storage.uid;
+        $scope.data.pwd = "";
+        $scope.login = function () {
+            params = {
+                type: "login"
+                , uid: $scope.data.uid
+                , pwd: $scope.data.pwd
+            };
+            $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+
+            $http({
+                    url: 'http://b84e2cc5.ngrok.io//index.php'
+                    , method: "POST"
+                    , data: params
+                })
+                .then(function (response) {
+                        if (response.data == "true") {
+                            console.log("Storing Login");
+                            $scope.$storage.uid = params.uid;
+                            searchResults.login();
+                            //                            console.log($scope.$previousState)
+                            $scope.back()
+                                //                            $state.go($scope.$previousState.name)
+
+
+                        } else {
+                            alert("Login Failed! Try Again");
+
+                        }
+                    }
+                    , function (response) { // optional
+                    });
+
+        };
+
+
+    })
+    .controller('cityCtrl', function ($scope, $ionicModal) {
+        $scope.listdata = ['Chennai', 'Bangalore', 'Hyderabad', 'Mumbai', 'Trichy', 'Salem', 'Madurai', 'Vellore'];
+        $scope.data = {
+            clientSide: $scope.cityName
+
+        };
+        $ionicModal.fromTemplateUrl('templates/popup.html', {
+            scope: $scope
+            , animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.modal = modal;
+        });
+        $scope.openModal = function () {
+            $scope.modalTitle = "City";
+            $scope.modal.show();
+        };
+        $scope.closeModal = function () {
+            $scope.cityName = $scope.data.clientSide;
+            $scope.modal.hide();
+        };
+        // Cleanup the modal when we're done with it!
+        $scope.$on('$destroy', function () {
+            $scope.modal.remove();
+        });
+        // Execute action on hide modal
+        $scope.$on('modal.hidden', function () {
+            // Execute action
+        });
+        // Execute action on remove modal
+        $scope.$on('modal.removed', function () {
+            // Execute action
+        });
+    })
+    .directive('focusMe', function ($timeout) {
+        return {
+            link: function (scope, element, attrs) {
+
+                $timeout(function () {
+                    element[0].focus();
+                });
+            }
+        };
+    });

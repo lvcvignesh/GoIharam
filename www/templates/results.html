@@ -1,21 +1,18 @@
 <ion-view view-title="PLAN YOUR TRIP">
-	<div class="bar bar-header background-yellow no-border-bottom">
-	  <button class="button button-icon icon ion-ios-arrow-left" ng-click="myGoBack()"></button>
-	  <div class="title">PLAN YOUR TRIP</div>
-	  <button class="button button-icon icon ion-navicon"></button>
-	</div>
-	<ion-content class="has-header background-white">
-		<div class="list background-white">
-		<a class="item item-thumbnail-left item-icon-right item-text-wrap" ng-repeat="playlist in playlists" href="#">
-	      <img src="img/etihad3.jpg">
-	      <i class="icon ion-ios-arrow-right color-yellow"></i>
-	      <h2>{{playlist.Name}}</h2>
-	      <p style="font-size:10px !important">{{playlist.Area}}</p>
-	      <pre style="font-size:10px !important">Economy   Rs.{{playlist.P1}}</pre>
-	      <pre style="font-size:10px !important">Deluxe    Rs.{{playlist.P2}}</pre>
-	      <pre style="font-size:10px !important">Elite     Rs.{{playlist.P3}}</pre>
-	    </a>
-
-	    </div>
-	</ion-content>
+    <div class="bar bar-header background-yellow no-border-bottom">
+        <button class="button button-icon icon ion-ios-arrow-left" ng-click="myGoBack()"></button>
+        <div class="title">PLAN YOUR TRIP</div>
+        <button class="button button-icon icon ion-navicon"></button>
+    </div>
+    <ion-content class="has-header background-white">
+        <div class="list background-white">
+            <a class="item item-thumbnail-left item-icon-right item-text-wrap" ng-repeat="playlist in playlists" href="#/app/browse/{{playlist.agentid}}/false" ng-if="playlist.agentid!=null">
+                <img src="http://www.goihram.com/xfact/assets/uploads/Ajwa.jpg">
+                <i class="icon ion-ios-arrow-right color-yellow"></i>
+                <h2>{{playlist.name}}</h2>
+                <p style="font-size:10px !important">{{playlist.Area}}</p>
+                <pre style="font-size:10px !important" ng-repeat="package in playlist.packages" id="{{package.pakcage_id}}">{{package.packname}} Rs. {{package.price}}</pre>
+            </a>
+        </div>
+    </ion-content>
 </ion-view>

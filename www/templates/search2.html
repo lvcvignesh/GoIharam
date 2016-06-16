@@ -1,65 +1,65 @@
 <ion-view view-title="PLAN YOUR TRIP">
-	<div class="bar bar-header background-yellow no-border-bottom">
+    <!--<div class="bar bar-header background-yellow no-border-bottom">
 	  <button class="button button-icon icon ion-ios-arrow-left" ng-click="myGoBack()"></button>
 	  <div class="title">PLAN YOUR TRIP</div>
 	  <button class="button button-icon icon ion-navicon"></button>
-	</div>
-	<ion-content scroll="false" class="has-header background-white">
-		<div id="search-div1" class="table-full padding-sides">
-			<h2 class="word-wrap table-center">"Any Quote On travel"</h2>
-		</div>
-		<div id="search-div2" class="list background-white no-margin-bottom">
-			<div class="item item-icon-right height25 no-padding">
-				<div class="height40 searchitem-header" >
-					DEPART ON
-				</div>
-				<div class="height20">
-				</div>
-				<div class="height40 searchitem-content">
-					Thursday, 09 April 2016
-					<i class="icon ion-ios-arrow-down"></i>
-				</div>
-				
-			</div>
-			<div class="item item-icon-right height25 no-padding">
-				<div class="height40 searchitem-header" >
-					TRAVELLERS
-				</div>
-				<div class="height20">
-				</div>
-				<div class="height40 searchitem-content">
-					2 Adults
-					<i class="icon ion-ios-arrow-down"></i>
-				</div>
-			</div>
-			<!--<div class="item item-icon-right height25">
+	</div>-->
+    <ion-content scroll="false" class="has-header background-white">
+        <div id="search-div1" class="table-full padding-sides background-yellow">
+            <h2 class="word-wrap font-titilium table-center">"Any Quote On travel"</h2>
+        </div>
+        <div id="search-div2" class="list background-white no-margin-bottom">
+            <a class="item item-icon-right height25 no-padding" ng-click="openModal()">
+                <div class="height40 searchitem-header">
+                    TRAVELLERS
+                </div>
+                <div class="height20">
+                </div>
+                <div class="height40 searchitem-content">
+                    {{data.clientSide}} {{srcData.numberText}}
+                    <i class="icon ion-ios-arrow-down"></i>
+                </div>
+            </a>
+            <div class="item item-icon-right height25 no-padding" ng-controller='cityCtrl' ng-click="openModal()">
+                <div class="height40 searchitem-header">
+                    CITY
+                </div>
+                <div class="height20">
+                </div>
+                <div class="height40 searchitem-content">
+                    {{data.clientSide}}
+                    <i class="icon ion-ios-arrow-down"></i>
+                </div>
+            </div>
+            <!--<div class="item item-icon-right height25">
 				<div class="row col searchitem-header" >
 					TRAVELLERS
-				</div>
+				</div;>
 				<div class="row col searchitem-content">
 					2 Adults
 					<i class="icon ion-ios-arrow-down"></i>
 				</div>
 			</div>-->
-			<div class="item row no-padding" style="height:20%">
-				<a style="width:50%;height:100%;padding-right:5px;font-weight:bold" class="button background-yellow table-full no-rounded-corners">
-					<div class="table-center">HUJ</div>
-				</a>
-				<a style="width:50%;height:100%;font-weight:bold" class="button no-rounded-corners table-full">
-					<div class="table-center">UMRAH</div>
-				</a>
-			</div>
-			<div class="item no-padding" style="height:30%">
-				<div class="height20 searchitem-header" >
-					BUDGET RANGE
-				</div>
-				<div class="height80 col">
-				<rzslider rz-slider-model="slider_translate.minValue" rz-slider-high="slider_translate.maxValue" rz-slider-options="slider_translate.options" style="border-right:13px solid"></rzslider>
-				</div>
-			</div>
-		</div>
-		<div id="search-div3" class="padding-form background-white">
-			<button class="button background-yellow bold-font" type="submit " style="width:100% ">PLAN MY TRIP</button>
-		</div>
-	</ion-content>
+            <div class="item row no-padding" style="height:20%;padding:0 !important;">
+                <a style="width:50%;height:100%;padding-right:5px;font-weight:bold" class="button table-full {{b1}} no-rounded-corners" ng-click="select('Hajj')">
+                    <div class="table-center">HAJJ</div>
+                </a>
+                <a style="width:50%;height:100%;padding-right:5px;font-weight:bold" class="button table-full {{b2}} no-rounded-corners" ng-click="select('Umrah')">
+                    <div class="table-center">UMRAH</div>
+                </a>
+            </div>
+            <div class="item no-padding" style="height:30%">
+                <div class="height20 searchitem-header">
+                    BUDGET RANGE
+                </div>
+                <div class="height80 padding-sides col">
+                    <div>
+                        <input type="text" id="range" value="" name="range" />
+                    </div>
+                </div>
+            </div>
+            <div id="search-div3" class="padding-form background-white">
+                <button class="button background-yellow font-titilium bold-font" type="button" ng-click="send()" style="width:100% ">PLAN MY TRIP</button>
+            </div>
+    </ion-content>
 </ion-view>
